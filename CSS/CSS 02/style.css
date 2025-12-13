@@ -1,55 +1,65 @@
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
-/* p { */
-/* background-color: yellow; */
-/* border: 2px solid black; */
-/* padding: 2px 100px 50px 20px;
-  margin: 55px 50px 100px 10px; */
+/* p {
+  background-color: yellow;
+  border: 2px solid black; */
 
-/* padding-left: 200px; */
+/* font-size: 2rem; */
+/* padding: 30px;
+  margin: 50px; */
+
+/* padding: 2px 100px 50px 10px;
+  margin: 55px 10px 90px 200px; */
+/* padding: 200px; */
 /* } */
 
 /* h1 {
+  font-size: 0.5rem;
   border: 2px solid yellow;
-  padding: 100px;
-  margin: 55px;
+  padding: 10px;
 } */
 
 /* div {
   background-color: lightblue;
-  border: 50px solid black;
-  padding: 20px;
-  width: 300px;
-  margin: 0 100px;
-} */
+  border: 2px solid black;
+  padding: 20px; */
+/* width: 300px;
+  margin: 0 100px; */
+/* } */
 
-/* p {
-  display: inline;
+/* p { */
+/* display: inline;
   background-color: lightgreen;
-  border: 2px solid red;
-  padding: 10px;
-  line-height: 50px;
-  /* margin-bottom: 40px; */
+  border: 2px solid red; */
+/* padding: 10px; */
+/* margin-bottom: 40px; */
 /* } */
 
 /* span {
   display: block;
   background-color: lightcoral;
-  border: 2px solid blue;
-  padding: 10px;
-  margin-top: 100px; */
-/* line-height: 100px; */
+  border: 2px solid blue; */
+/* padding: 10px; */
+/* margin-top: 200px; */
 /* } */
 
 /* section {
   background-color: lightgray;
-  border: 2px solid purple;
-  padding: 10px;
+  border: 50px solid purple;
+  padding: 50px;
   margin: 20px;
   width: 300px;
   margin: 40px 100px;
+}
+
+div {
+  background-color: lightblue;
+  border: 50px solid orange;
+  padding: 20px;
+  margin: 20px;
+  width: 300px;
 } */
 
 /* div {
@@ -104,13 +114,13 @@ p {
   color: blue;
 } */
 
-#hello {
-  color: black;
-  /* background-color: yellow;
+/* #hello {
+  color: black; */
+/* background-color: yellow;
   padding: 100px; */
-}
+/* } */
 
-.msg.warning.para {
+/* .msg.warning.para {
   color: green;
 }
 
@@ -120,4 +130,37 @@ p {
 
 .msg.warning {
   color: blue;
+} */
+/* 
+div {
+} */
+
+/* .div01 {
+  background-color: lightblue;
+  border: 5px solid black;
+  padding: 20px;
+  margin: 10px 0;
 }
+
+.div02 {
+  background-color: lightgreen;
+  border: 5px solid black;
+  padding: 20px;
+} */
+
+#div01 {
+  background-color: lightblue;
+  border: 5px solid black;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+#div01 .para02 {
+  color: purple;
+}
+
+/* #div02 {
+  background-color: lightgreen;
+  border: 5px solid black;
+  padding: 20px;
+} */

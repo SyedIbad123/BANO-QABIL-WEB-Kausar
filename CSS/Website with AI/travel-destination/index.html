@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover Switzerland - Alpine Paradise</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: #2c3e50;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1.2rem 5%;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      nav:hover {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #2c3e50;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: #667eea;
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.3)
+          ),
+          url("https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1920&q=80")
+            center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .hero-content {
+        color: white;
+        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+        animation: slideUp 1s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+
+      .cta-button {
+        padding: 1rem 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+      }
+
+      /* Section Styles */
+      section {
+        padding: 6rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        color: #2c3e50;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+      }
+
+      /* Card Grid */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .card:hover .card-image {
+        transform: scale(1.1);
+      }
+
+      .card-content {
+        padding: 2rem;
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+      }
+
+      .card-text {
+        color: #7f8c8d;
+        line-height: 1.6;
+      }
+
+      /* Historical Places Section */
+      #historical {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      }
+
+      /* Culture Section */
+      #culture {
+        background: white;
+      }
+
+      /* Adventure Section */
+      #adventure {
+        background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+      }
+
+      /* Nature Section */
+      #nature {
+        background: white;
+      }
+
+      /* Streets Section */
+      #streets {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      }
+
+      /* Dishes Section */
+      #dishes {
+        background: white;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        text-align: center;
+        padding: 3rem 5%;
+      }
+
+      footer p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #667eea;
+        transform: translateY(-3px);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+          font-size: 0.9rem;
+        }
+
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      /* Scroll Animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo">🏔️ Switzerland</div>
+        <ul class="nav-links">
+          <li><a href="#historical">Historical</a></li>
+          <li><a href="#culture">Culture</a></li>
+          <li><a href="#adventure">Adventure</a></li>
+          <li><a href="#nature">Nature</a></li>
+          <li><a href="#streets">Streets</a></li>
+          <li><a href="#dishes">Dishes</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover Switzerland</h1>
+        <p>Where Alpine Majesty Meets Timeless Elegance</p>
+        <button class="cta-button">Start Your Journey</button>
+      </div>
+    </section>
+
+    <!-- Historical Places -->
+    <section id="historical">
+      <h2 class="section-title">Historical Places</h2>
+      <div class="card-grid">
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?w=800&q=80"
+            alt="Chillon Castle"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Chillon Castle</h3>
+            <p class="card-text">
+              A medieval fortress on Lake Geneva, this iconic water castle has
+              witnessed over 1000 years of history. Its strategic location and
+              well-preserved architecture make it one of Switzerland's most
+              visited historic monuments.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1568908209474-3b4e3f867d5f?w=800&q=80"
+            alt="Old Town Bern"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Old Town of Bern</h3>
+            <p class="card-text">
+              A UNESCO World Heritage Site, Bern's medieval old town features
+              arcaded streets, ornate fountains, and the famous Zytglogge clock
+              tower. The city's historical center remains remarkably intact from
+              the 12th century.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
+            alt="Chapel Bridge"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Chapel Bridge, Lucerne</h3>
+            <p class="card-text">
+              Dating back to 1333, this covered wooden bridge is one of Europe's
+              oldest. Adorned with 17th-century paintings, it serves as an
+              iconic symbol of Lucerne and Swiss heritage, spanning the Reuss
+              River majestically.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Culture -->
+    <section id="culture">
+      <h2 class="section-title">Swiss Culture</h2>
+      <div class="card-grid">
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80"
+            alt="Alpine Traditions"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Alpine Traditions</h3>
+            <p class="card-text">
+              Experience authentic Swiss traditions including alphorn music,
+              yodeling, and traditional folk festivals. The Alpine culture
+              celebrates a deep connection with mountain life, passed down
+              through generations with pride and passion.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80"
+            alt="Swiss Watchmaking"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Watchmaking Heritage</h3>
+            <p class="card-text">
+              Switzerland's reputation for precision and craftsmanship is
+              embodied in its world-renowned watchmaking tradition. Visit
+              museums and workshops to witness the meticulous artistry behind
+              Swiss timepieces, a craft perfected over centuries.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=800&q=80"
+            alt="Festivals"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Cultural Festivals</h3>
+            <p class="card-text">
+              From Basel's vibrant Fasnacht carnival to Montreux Jazz Festival,
+              Switzerland hosts world-class cultural events. These celebrations
+              showcase the nation's diverse linguistic regions and their unique
+              customs, uniting tradition with modernity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Adventure -->
+    <section id="adventure">
+      <h2 class="section-title">Alpine Adventures</h2>
+      <div class="card-grid">
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80"
+            alt="Skiing"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">World-Class Skiing</h3>
+            <p class="card-text">
+              Switzerland offers legendary ski resorts like Zermatt, St. Moritz,
+              and Verbier. With pristine slopes, modern facilities, and
+              breathtaking alpine vistas, it's a paradise for winter sports
+              enthusiasts of all skill levels.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80"
+            alt="Mountain Hiking"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Mountain Hiking</h3>
+            <p class="card-text">
+              Explore over 65,000 kilometers of marked hiking trails through
+              alpine meadows, glacier landscapes, and mountain peaks. From
+              leisurely walks to challenging summit climbs, every trail offers
+              spectacular panoramic views.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1498855926480-d98e83099315?w=800&q=80"
+            alt="Paragliding"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Paragliding & More</h3>
+            <p class="card-text">
+              Soar above the Alps with paragliding experiences in Interlaken and
+              Davos. Switzerland also offers canyoning, rock climbing, and
+              mountain biking, providing adrenaline-pumping adventures amid
+              stunning natural beauty.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nature -->
+    <section id="nature">
+      <h2 class="section-title">Natural Wonders</h2>
+      <div class="card-grid">
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=800&q=80"
+            alt="Swiss Alps"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">The Majestic Alps</h3>
+            <p class="card-text">
+              Home to iconic peaks like the Matterhorn, Eiger, and Jungfrau, the
+              Swiss Alps dominate the landscape with snow-capped grandeur. These
+              mountains offer year-round beauty, from wildflower meadows in
+              summer to pristine winter wonderlands.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
+            alt="Alpine Lakes"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Crystal Alpine Lakes</h3>
+            <p class="card-text">
+              Discover pristine lakes like Geneva, Lucerne, and Brienz,
+              surrounded by mountain peaks. Their turquoise waters reflect the
+              surrounding Alps, offering opportunities for boat cruises,
+              swimming, and waterside relaxation in scenic settings.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
+            alt="Waterfalls"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Rhine Falls</h3>
+            <p class="card-text">
+              Europe's largest waterfall thunders with impressive force near
+              Schaffhausen. The Rhine Falls cascade over 150 meters wide,
+              creating a spectacular natural display. Viewing platforms bring
+              you close to the roaring waters and mist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Streets -->
+    <section id="streets">
+      <h2 class="section-title">Charming Streets</h2>
+      <div class="card-grid">
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?w=800&q=80"
+            alt="Zurich Streets"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Zurich Old Town</h3>
+            <p class="card-text">
+              Wander through cobblestone lanes lined with medieval guild houses,
+              boutique shops, and cozy cafés. The Bahnhofstrasse offers luxury
+              shopping while narrow side streets reveal hidden courtyards and
+              authentic Swiss character.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=800&q=80"
+            alt="Geneva Lakefront"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Geneva Waterfront</h3>
+            <p class="card-text">
+              Stroll along elegant lakeside promenades with views of the famous
+              Jet d'Eau fountain and Mont Blanc beyond. Geneva's cosmopolitan
+              streets blend international flair with Swiss sophistication,
+              creating an urbane European atmosphere.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1568850070034-65c71e8f7e2f?w=800&q=80"
+            alt="Mountain Villages"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Alpine Villages</h3>
+            <p class="card-text">
+              Explore picture-perfect villages like Grindelwald and Wengen with
+              traditional wooden chalets adorned with flower boxes. Car-free
+              streets preserve tranquility while offering authentic Alpine charm
+              and mountain hospitality at its finest.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dishes -->
+    <section id="dishes">
+      <h2 class="section-title">Swiss Cuisine</h2>
+      <div class="card-grid">
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=800&q=80"
+            alt="Fondue"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Swiss Fondue</h3>
+            <p class="card-text">
+              The quintessential Swiss experience: melted Gruyère and Emmental
+              cheese blended with white wine and garlic. Dip crusty bread cubes
+              into this communal pot for a warming, social dining tradition
+              perfect for mountain evenings.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=800&q=80"
+            alt="Raclette"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Raclette</h3>
+            <p class="card-text">
+              Watch as a half-wheel of raclette cheese is heated and scraped
+              onto your plate, served with boiled potatoes, pickled onions, and
+              cornichons. This hearty Alpine dish embodies Swiss comfort food at
+              its most satisfying.
+            </p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1481391243133-f96216dcb5d2?w=800&q=80"
+            alt="Swiss Chocolate"
+            class="card-image"
+          />
+          <div class="card-content">
+            <h3 class="card-title">Swiss Chocolate</h3>
+            <p class="card-text">
+              Indulge in world-famous Swiss chocolate, renowned for its smooth
+              texture and rich flavor. From artisan chocolatiers to iconic
+              brands like Lindt and Toblerone, Switzerland's chocolate
+              craftsmanship is legendary and utterly irresistible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Discover Switzerland. Experience Alpine Excellence.</p>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Scroll animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
+
+      // Nav background on scroll
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          nav.style.background = "rgba(255, 255, 255, 0.98)";
+        } else {
+          nav.style.background = "rgba(255, 255, 255, 0.95)";
+        }
+      });
+    </script>
+  </body>
+</html>

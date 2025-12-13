@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: white;
+}
+
+/* .list { */
+/* background-color: chocolate; */
+/* color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  list-style-type: none;
+  justify-content: center;
+  padding: 30px;
+  cursor: pointer; */
+/* align-items: center; */
+/* } */
+
+/* .list li:hover {
+  color: chocolate;
+  border-bottom: 2px solid chocolate;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+} */
+
+/* psuedo selector */
+/* .list li:nth-child(1) {
+  flex-grow: 2;
+}
+
+.list li:nth-child(2) {
+  flex-grow: 1;
+}
+
+.list li:nth-child(3) {
+  flex-grow: 3;
+} */
+
+.list {
+  background-color: rgb(34, 24, 83);
+  width: 100vw;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  list-style-type: none;
+  justify-content: space-evenly;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+/* pseudo selectors */
+/* .list li:hover {
+  color: chocolate;
+  border-bottom: 1px solid chocolate;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+} */
+
+@media (max-width: 600px) {
+  .list {
+    flex-direction: column;
+    background-color: burlywood;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 601px) {
+  .list {
+    background-color: red;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .list {
+    background-color: green;
+  }
+}
